@@ -166,6 +166,8 @@ Public Class SingleTimer
             Me.countdown = True
             Me.Timer.Enabled = True
             StartButton.Enabled = False
+            StartButton.ForeColor = System.Drawing.SystemColors.WindowFrame
+            StartButton.BackColor = System.Drawing.SystemColors.ButtonShadow
             StopButton.Enabled = True
         End If
 
@@ -176,16 +178,15 @@ Public Class SingleTimer
         If StartButton.Enabled = True Then
             StartButton.ForeColor = System.Drawing.Color.SpringGreen
             StartButton.BackColor = System.Drawing.Color.White
-        Else
-
-            StartButton.ForeColor = System.Drawing.SystemColors.WindowFrame
-            StartButton.BackColor = System.Drawing.SystemColors.ButtonShadow
         End If
     End Sub
 
     Private Sub StopButton_Click(sender As Object, e As EventArgs) Handles StopButton.Click
         If StopButton.Enabled = True Then
             stopTiming()
+            StopButton.ForeColor = System.Drawing.SystemColors.WindowFrame
+            StopButton.BackColor = System.Drawing.SystemColors.ButtonShadow
+            StopButton.Enabled = False
         End If
         SetLook()
 
@@ -197,9 +198,6 @@ Public Class SingleTimer
         If StopButton.Enabled = True Then
             StopButton.ForeColor = System.Drawing.Color.Red
             StopButton.BackColor = System.Drawing.Color.White
-        Else
-            StopButton.ForeColor = System.Drawing.SystemColors.WindowFrame
-            StopButton.BackColor = System.Drawing.SystemColors.ButtonShadow
         End If
     End Sub
 
@@ -212,6 +210,8 @@ Public Class SingleTimer
             Me.MinutesCounter1.setValue(0)
             Me.SecondsCounter1.setValue(0)
             Me.Timer.Interval = 1000
+            ClearButton.ForeColor = System.Drawing.SystemColors.WindowFrame
+            ClearButton.BackColor = System.Drawing.SystemColors.ButtonShadow
             DisableAllButtons()
         End If
     End Sub
@@ -220,9 +220,6 @@ Public Class SingleTimer
         If ClearButton.Enabled = True Then
             ClearButton.ForeColor = System.Drawing.Color.Black
             ClearButton.BackColor = System.Drawing.Color.White
-        Else
-            ClearButton.ForeColor = System.Drawing.SystemColors.WindowFrame
-            ClearButton.BackColor = System.Drawing.SystemColors.ButtonShadow
         End If
     End Sub
 
@@ -240,7 +237,7 @@ Public Class SingleTimer
 
 
         Me.Timer.Enabled = False
-        StopButton.Enabled = False
+
 
         If Me.beeping = True Then
             Me.Timer.Interval = 1000
@@ -253,6 +250,8 @@ Public Class SingleTimer
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If Me.beeping = True Then
+            ClearButton.ForeColor = System.Drawing.SystemColors.WindowFrame
+            ClearButton.BackColor = System.Drawing.SystemColors.ButtonShadow
             Me.ClearButton.Enabled = False
             Me.countdown = False
             Me.Timer.Interval = Me.Beeps
