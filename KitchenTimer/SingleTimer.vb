@@ -59,20 +59,24 @@ Public Class SingleTimer
     End Sub
 
 
-    Private Sub addMinutes(extraMins As Integer)
-
+    Friend Shared Sub addMinutes(extraMins As Integer)
+        SingleTimer.SelectedTimer.AddMinutesToSelected(extraMins)
+        SingleTimer.SelectedTimer.StartButton.Enabled = True
+        SingleTimer.SelectedTimer.ClearButton.Enabled = True
     End Sub
 
     Private Sub AddMinutesToSelected(extraMins As Integer)
-
+        Me.MinutesCounter1.increaseBy(extraMins)
     End Sub
 
-    Private Sub addSeconds(extraSeconds As Integer)
-
+    Friend Shared Sub addSeconds(extraSeconds As Integer)
+        SingleTimer.SelectedTimer.AddSecondsToSelected(extraSeconds)
+        SingleTimer.SelectedTimer.StartButton.Enabled = True
+        SingleTimer.SelectedTimer.ClearButton.Enabled = True
     End Sub
 
     Private Sub AddSecondsToSelected(extraSeconds As Integer)
-
+        Me.SecondsCounter1.increaseBy(extraSeconds)
     End Sub
 
     Private Sub newBackColor(newColor As Color)
@@ -96,17 +100,36 @@ Public Class SingleTimer
     End Sub
 
     Private Sub deselectMe()
+        If Me.beeping = True Then
+            alarmColours()
+        Else
+            Me.newForeColor(System.Drawing.Color.RoyalBlue)
+        End If
         Me.newBackColor(System.Drawing.SystemColors.ActiveCaption)
-        Me.newForeColor(System.Drawing.Color.RoyalBlue)
         Me.RadioButton1.Checked = False
+        Me.Label1.Visible = True
+
     End Sub
 
     Private Sub selectMe()
+
+        If Me.beeping = True Then
+            alarmColours()
+        Else
+            Me.newForeColor(SystemColors.Control)
+        End If
         Me.newBackColor(System.Drawing.SystemColors.Highlight)
-        Me.newForeColor(SystemColors.Control)
         Me.RadioButton1.Checked = True
+        Me.Label1.Visible = True
         SingleTimer.SelectedTimer = Me
 
+    End Sub
+
+    Private Sub alarmColours()
+        Me.RadioButton1.ForeColor = System.Drawing.Color.Red
+        Me.MinutesCounter1.ForeColor = System.Drawing.Color.Red
+        Me.SecondsCounter1.ForeColor = System.Drawing.Color.Red
+        Me.Label1.ForeColor = System.Drawing.Color.Red
     End Sub
 
     Private Sub SetLook()
@@ -161,13 +184,13 @@ Public Class SingleTimer
     End Sub
 
     Private Sub StopButton_Click(sender As Object, e As EventArgs) Handles StopButton.Click
-        SetLook()
-        Me.beeping = False
         If StopButton.Enabled = True Then
-            Me.countdown = False
-            Me.Timer.Enabled = False
+            stopTiming()
         End If
-        StopButton.Enabled = False
+        SetLook()
+
+
+
     End Sub
 
     Private Sub StopButton_EnabledChanged(sender As Object, e As EventArgs) Handles StopButton.EnabledChanged
@@ -182,11 +205,14 @@ Public Class SingleTimer
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
         SetLook()
+
         If ClearButton.Enabled = True Then
+            Me.Timer.Enabled = False
+            StopButton.Enabled = False
             Me.MinutesCounter1.setValue(0)
             Me.SecondsCounter1.setValue(0)
-            Me.StartButton.Enabled = False
-            Me.ClearButton.Enabled = False
+            Me.Timer.Interval = 1000
+            DisableAllButtons()
         End If
     End Sub
 
@@ -212,17 +238,35 @@ Public Class SingleTimer
 
     Private Sub stopTiming()
 
+
+        Me.Timer.Enabled = False
+        StopButton.Enabled = False
+
+        If Me.beeping = True Then
+            Me.Timer.Interval = 1000
+            Me.beeping = False
+            DisableAllButtons()
+        Else
+            StartButton.Enabled = True
+        End If
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If Me.beeping = True Then
+            Me.ClearButton.Enabled = False
+            Me.countdown = False
             Me.Timer.Interval = Me.Beeps
+            If Me.Label1.Visible = True Then
+                Me.Label1.Visible = False
+            Else
+                Me.Label1.Visible = True
+            End If
             soundAlarm() 'This Is When the singleTimer has reached zero And the alarm should be sounding
         ElseIf Me.countdown = True Then
             Me.SecondsCounter1.decrement() 'This is when the singletimer should be decrementing by one second every one second
             If Me.MinutesCounter1.isZero() And Me.SecondsCounter1.isZero() Then
                 Me.beeping = True
-                Me.countdown = False
+                Me.alarmColours()
                 Me.Timer.Interval = 1
             End If
         End If

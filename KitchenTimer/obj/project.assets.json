@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "B:\\Downloads\\forHassaan\\KitchenTimer\\KitchenTimer.vbproj",
+      "projectUniqueName": "B:\\Downloads\\forHassaan\\613\\KitchenTimer\\KitchenTimer.vbproj",
       "projectName": "KitchenTimer",
-      "projectPath": "B:\\Downloads\\forHassaan\\KitchenTimer\\KitchenTimer.vbproj",
+      "projectPath": "B:\\Downloads\\forHassaan\\613\\KitchenTimer\\KitchenTimer.vbproj",
       "packagesPath": "C:\\Users\\Glaciex\\.nuget\\packages\\",
-      "outputPath": "B:\\Downloads\\forHassaan\\KitchenTimer\\obj\\",
+      "outputPath": "B:\\Downloads\\forHassaan\\613\\KitchenTimer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
