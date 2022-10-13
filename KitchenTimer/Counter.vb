@@ -10,9 +10,8 @@
     End Sub
 
 
-
     Protected maxvalue As Integer
-    Private value As Integer
+    Protected value As Integer
 
     Public Sub New()
 

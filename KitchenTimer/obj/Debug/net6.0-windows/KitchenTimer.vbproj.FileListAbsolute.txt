@@ -66,7 +66,6 @@ B:\Downloads\forHassaan\613\KitchenTimer\bin\Debug\net6.0-windows\KitchenTimer.d
 B:\Downloads\forHassaan\613\KitchenTimer\bin\Debug\net6.0-windows\KitchenTimer.pdb
 B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\KitchenTimer.vbproj.AssemblyReference.cache
 B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\KitchenTimer.Counter.resources
-B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\KitchenTimer.KitchenTimerForm.resources
 B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\KitchenTimer.MinutesCounter.resources
 B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\KitchenTimer.SecondsCounter.resources
 B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\KitchenTimer.SingleTimer.resources
@@ -80,3 +79,4 @@ B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\refint\Kitchen
 B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\KitchenTimer.pdb
 B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\KitchenTimer.genruntimeconfig.cache
 B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\ref\KitchenTimer.dll
+B:\Downloads\forHassaan\613\KitchenTimer\obj\Debug\net6.0-windows\KitchenTimer.Center.resources

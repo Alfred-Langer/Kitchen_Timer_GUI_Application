@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class KitchenTimerForm
+Partial Class Center
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,184 +22,190 @@ Partial Class KitchenTimerForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.BackLeft_SingleTimer = New KitchenTimer.SingleTimer()
-        Me.BackRight_SingleTimer = New KitchenTimer.SingleTimer()
-        Me.FrontLeft_SingleTimer = New KitchenTimer.SingleTimer()
-        Me.OneSecond = New System.Windows.Forms.Button()
-        Me.ThreeSecond = New System.Windows.Forms.Button()
-        Me.TenSecond = New System.Windows.Forms.Button()
-        Me.OneMinute = New System.Windows.Forms.Button()
-        Me.ThreeMinute = New System.Windows.Forms.Button()
-        Me.TenMinute = New System.Windows.Forms.Button()
-        Me.FrontRight_SingleTimer = New KitchenTimer.SingleTimer()
+        Me.SingleTimer1 = New KitchenTimer.SingleTimer()
+        Me.SingleTimer2 = New KitchenTimer.SingleTimer()
+        Me.SingleTimer3 = New KitchenTimer.SingleTimer()
+        Me.Sec1 = New System.Windows.Forms.Button()
+        Me.Sec3 = New System.Windows.Forms.Button()
+        Me.Sec10 = New System.Windows.Forms.Button()
+        Me.Min1 = New System.Windows.Forms.Button()
+        Me.Min3 = New System.Windows.Forms.Button()
+        Me.Min10 = New System.Windows.Forms.Button()
+        Me.SingleTimer4 = New KitchenTimer.SingleTimer()
         Me.SuspendLayout()
         '
-        'BackLeft_SingleTimer
+        'SingleTimer1
         '
-        Me.BackLeft_SingleTimer.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.BackLeft_SingleTimer.Beeps = 300
-        Me.BackLeft_SingleTimer.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.BackLeft_SingleTimer.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.BackLeft_SingleTimer.Frequency = 440
-        Me.BackLeft_SingleTimer.Location = New System.Drawing.Point(12, 11)
-        Me.BackLeft_SingleTimer.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.BackLeft_SingleTimer.Name = "BackLeft_SingleTimer"
-        Me.BackLeft_SingleTimer.Size = New System.Drawing.Size(241, 177)
-        Me.BackLeft_SingleTimer.TabIndex = 0
-        Me.BackLeft_SingleTimer.Title = "Back Left"
+        Me.SingleTimer1.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
+        Me.SingleTimer1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.SingleTimer1.Alarm_Beeps = 1
+        Me.SingleTimer1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.SingleTimer1.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.SingleTimer1.Alarm_Frequency = 500
+        Me.SingleTimer1.Location = New System.Drawing.Point(12, 11)
+        Me.SingleTimer1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.SingleTimer1.Name = "SingleTimer1"
+        Me.SingleTimer1.Size = New System.Drawing.Size(241, 177)
+        Me.SingleTimer1.TabIndex = 0
+        Me.SingleTimer1.Title = "Back Left"
         '
-        'BackRight_SingleTimer
+        'SingleTimer2
         '
-        Me.BackRight_SingleTimer.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.BackRight_SingleTimer.Beeps = 350
-        Me.BackRight_SingleTimer.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.BackRight_SingleTimer.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.BackRight_SingleTimer.Frequency = 740
-        Me.BackRight_SingleTimer.Location = New System.Drawing.Point(278, 11)
-        Me.BackRight_SingleTimer.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.BackRight_SingleTimer.Name = "BackRight_SingleTimer"
-        Me.BackRight_SingleTimer.Size = New System.Drawing.Size(241, 177)
-        Me.BackRight_SingleTimer.TabIndex = 1
-        Me.BackRight_SingleTimer.Title = "Back Right"
+        Me.SingleTimer2.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
+        Me.SingleTimer2.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.SingleTimer2.Alarm_Beeps = 2
+        Me.SingleTimer2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.SingleTimer2.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.SingleTimer2.Alarm_Frequency = 1000
+        Me.SingleTimer2.Location = New System.Drawing.Point(278, 11)
+        Me.SingleTimer2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.SingleTimer2.Name = "SingleTimer2"
+        Me.SingleTimer2.Size = New System.Drawing.Size(241, 177)
+        Me.SingleTimer2.TabIndex = 1
+        Me.SingleTimer2.Title = "Back Right"
         '
-        'FrontLeft_SingleTimer
+        'SingleTimer3
         '
-        Me.FrontLeft_SingleTimer.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.FrontLeft_SingleTimer.Beeps = 100
-        Me.FrontLeft_SingleTimer.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.FrontLeft_SingleTimer.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.FrontLeft_SingleTimer.Frequency = 1500
-        Me.FrontLeft_SingleTimer.Location = New System.Drawing.Point(12, 220)
-        Me.FrontLeft_SingleTimer.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.FrontLeft_SingleTimer.Name = "FrontLeft_SingleTimer"
-        Me.FrontLeft_SingleTimer.Size = New System.Drawing.Size(241, 177)
-        Me.FrontLeft_SingleTimer.TabIndex = 2
-        Me.FrontLeft_SingleTimer.Title = "Front Left"
+        Me.SingleTimer3.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
+        Me.SingleTimer3.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.SingleTimer3.Alarm_Beeps = 3
+        Me.SingleTimer3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.SingleTimer3.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.SingleTimer3.Alarm_Frequency = 1500
+        Me.SingleTimer3.Location = New System.Drawing.Point(12, 220)
+        Me.SingleTimer3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.SingleTimer3.Name = "SingleTimer3"
+        Me.SingleTimer3.Size = New System.Drawing.Size(241, 177)
+        Me.SingleTimer3.TabIndex = 2
+        Me.SingleTimer3.Title = "Front Left"
         '
-        'OneSecond
+        'Sec1
         '
-        Me.OneSecond.BackColor = System.Drawing.SystemColors.Highlight
-        Me.OneSecond.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.OneSecond.ForeColor = System.Drawing.SystemColors.Control
-        Me.OneSecond.Location = New System.Drawing.Point(15, 415)
-        Me.OneSecond.Name = "OneSecond"
-        Me.OneSecond.Size = New System.Drawing.Size(158, 64)
-        Me.OneSecond.TabIndex = 4
-        Me.OneSecond.Tag = 1
-        Me.OneSecond.Text = "1 Second"
-        Me.OneSecond.UseVisualStyleBackColor = False
+        Me.Sec1.BackColor = System.Drawing.SystemColors.Highlight
+        Me.Sec1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Sec1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Sec1.Location = New System.Drawing.Point(15, 415)
+        Me.Sec1.Name = "Sec1"
+        Me.Sec1.Size = New System.Drawing.Size(158, 64)
+        Me.Sec1.TabIndex = 4
+        Me.Sec1.Tag = 1
+        Me.Sec1.Text = "1 Second"
+        Me.Sec1.UseVisualStyleBackColor = False
         '
-        'ThreeSecond
+        'Sec3
         '
-        Me.ThreeSecond.BackColor = System.Drawing.SystemColors.Highlight
-        Me.ThreeSecond.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ThreeSecond.ForeColor = System.Drawing.SystemColors.Control
-        Me.ThreeSecond.Location = New System.Drawing.Point(189, 415)
-        Me.ThreeSecond.Name = "ThreeSecond"
-        Me.ThreeSecond.Size = New System.Drawing.Size(158, 64)
-        Me.ThreeSecond.TabIndex = 10
-        Me.ThreeSecond.Tag = 3
-        Me.ThreeSecond.Text = "3 Seconds"
-        Me.ThreeSecond.UseVisualStyleBackColor = False
+        Me.Sec3.BackColor = System.Drawing.SystemColors.Highlight
+        Me.Sec3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Sec3.ForeColor = System.Drawing.SystemColors.Control
+        Me.Sec3.Location = New System.Drawing.Point(189, 415)
+        Me.Sec3.Name = "Sec3"
+        Me.Sec3.Size = New System.Drawing.Size(158, 64)
+        Me.Sec3.TabIndex = 10
+        Me.Sec3.Tag = 3
+        Me.Sec3.Text = "3 Seconds"
+        Me.Sec3.UseVisualStyleBackColor = False
         '
-        'TenSecond
+        'Sec10
         '
-        Me.TenSecond.BackColor = System.Drawing.SystemColors.Highlight
-        Me.TenSecond.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TenSecond.ForeColor = System.Drawing.SystemColors.Control
-        Me.TenSecond.Location = New System.Drawing.Point(361, 415)
-        Me.TenSecond.Name = "TenSecond"
-        Me.TenSecond.Size = New System.Drawing.Size(158, 64)
-        Me.TenSecond.TabIndex = 11
-        Me.TenSecond.Tag = 10
-        Me.TenSecond.Text = "10 Seconds"
-        Me.TenSecond.UseVisualStyleBackColor = False
+        Me.Sec10.BackColor = System.Drawing.SystemColors.Highlight
+        Me.Sec10.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Sec10.ForeColor = System.Drawing.SystemColors.Control
+        Me.Sec10.Location = New System.Drawing.Point(361, 415)
+        Me.Sec10.Name = "Sec10"
+        Me.Sec10.Size = New System.Drawing.Size(158, 64)
+        Me.Sec10.TabIndex = 11
+        Me.Sec10.Tag = 10
+        Me.Sec10.Text = "10 Seconds"
+        Me.Sec10.UseVisualStyleBackColor = False
         '
-        'OneMinute
+        'Min1
         '
-        Me.OneMinute.BackColor = System.Drawing.SystemColors.Highlight
-        Me.OneMinute.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.OneMinute.ForeColor = System.Drawing.SystemColors.Control
-        Me.OneMinute.Location = New System.Drawing.Point(15, 494)
-        Me.OneMinute.Name = "OneMinute"
-        Me.OneMinute.Size = New System.Drawing.Size(158, 64)
-        Me.OneMinute.TabIndex = 12
-        Me.OneMinute.Tag = 1
-        Me.OneMinute.Text = "1 Minute"
-        Me.OneMinute.UseVisualStyleBackColor = False
+        Me.Min1.BackColor = System.Drawing.SystemColors.Highlight
+        Me.Min1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Min1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Min1.Location = New System.Drawing.Point(15, 494)
+        Me.Min1.Name = "Min1"
+        Me.Min1.Size = New System.Drawing.Size(158, 64)
+        Me.Min1.TabIndex = 12
+        Me.Min1.Tag = 1
+        Me.Min1.Text = "1 Minute"
+        Me.Min1.UseVisualStyleBackColor = False
         '
-        'ThreeMinute
+        'Min3
         '
-        Me.ThreeMinute.BackColor = System.Drawing.SystemColors.Highlight
-        Me.ThreeMinute.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ThreeMinute.ForeColor = System.Drawing.SystemColors.Control
-        Me.ThreeMinute.Location = New System.Drawing.Point(189, 494)
-        Me.ThreeMinute.Name = "ThreeMinute"
-        Me.ThreeMinute.Size = New System.Drawing.Size(158, 64)
-        Me.ThreeMinute.TabIndex = 13
-        Me.ThreeMinute.Tag = 3
-        Me.ThreeMinute.Text = "3 Minutes"
-        Me.ThreeMinute.UseVisualStyleBackColor = False
+        Me.Min3.BackColor = System.Drawing.SystemColors.Highlight
+        Me.Min3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Min3.ForeColor = System.Drawing.SystemColors.Control
+        Me.Min3.Location = New System.Drawing.Point(189, 494)
+        Me.Min3.Name = "Min3"
+        Me.Min3.Size = New System.Drawing.Size(158, 64)
+        Me.Min3.TabIndex = 13
+        Me.Min3.Tag = 3
+        Me.Min3.Text = "3 Minutes"
+        Me.Min3.UseVisualStyleBackColor = False
         '
-        'TenMinute
+        'Min10
         '
-        Me.TenMinute.BackColor = System.Drawing.SystemColors.Highlight
-        Me.TenMinute.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TenMinute.ForeColor = System.Drawing.SystemColors.Control
-        Me.TenMinute.Location = New System.Drawing.Point(361, 494)
-        Me.TenMinute.Name = "TenMinute"
-        Me.TenMinute.Size = New System.Drawing.Size(158, 64)
-        Me.TenMinute.TabIndex = 14
-        Me.TenMinute.Tag = 10
-        Me.TenMinute.Text = "10 Minutes"
-        Me.TenMinute.UseVisualStyleBackColor = False
+        Me.Min10.BackColor = System.Drawing.SystemColors.Highlight
+        Me.Min10.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Min10.ForeColor = System.Drawing.SystemColors.Control
+        Me.Min10.Location = New System.Drawing.Point(361, 494)
+        Me.Min10.Name = "Min10"
+        Me.Min10.Size = New System.Drawing.Size(158, 64)
+        Me.Min10.TabIndex = 14
+        Me.Min10.Tag = 10
+        Me.Min10.Text = "10 Minutes"
+        Me.Min10.UseVisualStyleBackColor = False
         '
-        'FrontRight_SingleTimer
+        'SingleTimer4
         '
-        Me.FrontRight_SingleTimer.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.FrontRight_SingleTimer.Beeps = 500
-        Me.FrontRight_SingleTimer.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.FrontRight_SingleTimer.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.FrontRight_SingleTimer.Frequency = 200
-        Me.FrontRight_SingleTimer.Location = New System.Drawing.Point(278, 220)
-        Me.FrontRight_SingleTimer.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.FrontRight_SingleTimer.Name = "FrontRight_SingleTimer"
-        Me.FrontRight_SingleTimer.Size = New System.Drawing.Size(241, 177)
-        Me.FrontRight_SingleTimer.TabIndex = 15
-        Me.FrontRight_SingleTimer.Title = "Front Right"
+        Me.SingleTimer4.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
+        Me.SingleTimer4.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.SingleTimer4.Alarm_Beeps = 4
+        Me.SingleTimer4.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.SingleTimer4.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.SingleTimer4.Alarm_Frequency = 1750
+        Me.SingleTimer4.Location = New System.Drawing.Point(278, 220)
+        Me.SingleTimer4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.SingleTimer4.Name = "SingleTimer4"
+        Me.SingleTimer4.Size = New System.Drawing.Size(241, 177)
+        Me.SingleTimer4.TabIndex = 15
+        Me.SingleTimer4.TabStop = False
+        Me.SingleTimer4.Title = "Front Right"
         '
-        'KitchenTimerForm
+        'Center
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.ClientSize = New System.Drawing.Size(531, 584)
-        Me.Controls.Add(Me.FrontRight_SingleTimer)
-        Me.Controls.Add(Me.TenMinute)
-        Me.Controls.Add(Me.ThreeMinute)
-        Me.Controls.Add(Me.OneMinute)
-        Me.Controls.Add(Me.TenSecond)
-        Me.Controls.Add(Me.ThreeSecond)
-        Me.Controls.Add(Me.OneSecond)
-        Me.Controls.Add(Me.FrontLeft_SingleTimer)
-        Me.Controls.Add(Me.BackRight_SingleTimer)
-        Me.Controls.Add(Me.BackLeft_SingleTimer)
+        Me.Controls.Add(Me.SingleTimer4)
+        Me.Controls.Add(Me.Min10)
+        Me.Controls.Add(Me.Min3)
+        Me.Controls.Add(Me.Min1)
+        Me.Controls.Add(Me.Sec10)
+        Me.Controls.Add(Me.Sec3)
+        Me.Controls.Add(Me.Sec1)
+        Me.Controls.Add(Me.SingleTimer3)
+        Me.Controls.Add(Me.SingleTimer2)
+        Me.Controls.Add(Me.SingleTimer1)
         Me.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Name = "KitchenTimerForm"
-        Me.Text = "Alfred's Timer"
+        Me.Name = "Center"
+        Me.Text = "Alfred's Timer V1.0"
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents BackLeft_SingleTimer As SingleTimer
-    Friend WithEvents BackRight_SingleTimer As SingleTimer
-    Friend WithEvents FrontLeft_SingleTimer As SingleTimer
-    Friend WithEvents OneSecond As Button
-    Friend WithEvents ThreeSecond As Button
-    Friend WithEvents TenSecond As Button
-    Friend WithEvents OneMinute As Button
-    Friend WithEvents ThreeMinute As Button
-    Friend WithEvents TenMinute As Button
-    Friend WithEvents FrontRight_SingleTimer As SingleTimer
+    Friend WithEvents SingleTimer1 As SingleTimer
+    Friend WithEvents SingleTimer2 As SingleTimer
+    Friend WithEvents SingleTimer3 As SingleTimer
+    Friend WithEvents Sec1 As Button
+    Friend WithEvents Sec3 As Button
+    Friend WithEvents Sec10 As Button
+    Friend WithEvents Min1 As Button
+    Friend WithEvents Min3 As Button
+    Friend WithEvents Min10 As Button
+    Friend WithEvents SingleTimer4 As SingleTimer
 End Class

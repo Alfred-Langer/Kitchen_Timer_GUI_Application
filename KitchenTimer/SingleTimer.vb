@@ -2,11 +2,9 @@
 
 Public Class SingleTimer
 
-    Public Shared SelectedTimer As SingleTimer = KitchenTimerForm.BackLeft_SingleTimer
+    'Defining the three properties of the Single Timer Class. (I needed to add the Editor Browsable, Browsable, and Description attributes
+    'in order to see them in the properties window)
 
-    Private beeping As Boolean = False
-    Private countdown As Boolean = False
-    Private _title As String = "Back Left"
     <System.ComponentModel.EditorBrowsable(True)>
     <System.ComponentModel.Browsable(True)>
     <System.ComponentModel.Description("This is the title")>
@@ -16,86 +14,88 @@ Public Class SingleTimer
         End Get
         Set(ByVal NewValue As String)
             _title = NewValue
-            Me.RadioButton1.Text = NewValue
-
+            Me.TitleLabel.Text = NewValue
         End Set
     End Property
 
-    Private _frequency As Integer = 440
     <System.ComponentModel.EditorBrowsable(True)>
     <System.ComponentModel.Browsable(True)>
     <System.ComponentModel.Description("This is the Frequency of the Single Timer Alarm")>
-    Public Property Frequency() As Integer
+    Public Property Alarm_Frequency() As Integer
         Get
-            Return _frequency
+            Return frequency
         End Get
         Set(ByVal NewValue As Integer)
-            _frequency = NewValue
-
+            frequency = NewValue
         End Set
     End Property
 
-    Private _beeps As Integer = 250
     <System.ComponentModel.EditorBrowsable(True)>
     <System.ComponentModel.Browsable(True)>
     <System.ComponentModel.Description("This is the Duration of the Single Timer Alarm")>
-    Public Property Beeps() As Integer
+    Public Property Alarm_Beeps() As Integer
         Get
-            Return _beeps
+            Return beeps
         End Get
         Set(ByVal NewValue As Integer)
-            _beeps = NewValue
-
+            beeps = NewValue
         End Set
     End Property
     Public Sub New()
-
         ' This call is required by the designer.
         InitializeComponent()
-        Me.SecondsCounter1.setMinutesCounter(Me.MinutesCounter1)
-        Me.MinutesCounter1.setSecondsCounter(Me.SecondsCounter1)
 
-        ' Add any initialization after the InitializeComponent() call.
+        'This is where I give the SecondsCounter and MinutesCounter references to each other
+        Me.Seconds.setMinutesCounter(Me.Minutes)
+        Me.Minutes.setSecondsCounter(Me.Seconds)
+
     End Sub
 
 
-    Friend Shared Sub addMinutes(extraMins As Integer)
-        SingleTimer.SelectedTimer.AddMinutesToSelected(extraMins)
-        SingleTimer.SelectedTimer.StartButton.Enabled = True
-        SingleTimer.SelectedTimer.ClearButton.Enabled = True
+    Public Shared Sub addMinutes(extraMins As Integer)
+        If SingleTimer.SelectedTimer.countdown = False And SingleTimer.SelectedTimer.beeping = False Then
+            SingleTimer.SelectedTimer.AddMinutesToSelected(extraMins)
+            SingleTimer.SelectedTimer.StartButton.Enabled = True
+            SingleTimer.SelectedTimer.ClearButton.Enabled = True
+        End If
+
     End Sub
 
     Private Sub AddMinutesToSelected(extraMins As Integer)
-        Me.MinutesCounter1.increaseBy(extraMins)
+        Me.Minutes.increaseBy(extraMins)
     End Sub
 
-    Friend Shared Sub addSeconds(extraSeconds As Integer)
-        SingleTimer.SelectedTimer.AddSecondsToSelected(extraSeconds)
-        SingleTimer.SelectedTimer.StartButton.Enabled = True
-        SingleTimer.SelectedTimer.ClearButton.Enabled = True
+    Public Shared Sub addSeconds(extraSeconds As Integer)
+        If SingleTimer.SelectedTimer.countdown = False And SingleTimer.SelectedTimer.beeping = False Then
+            SingleTimer.SelectedTimer.AddSecondsToSelected(extraSeconds)
+            SingleTimer.SelectedTimer.StartButton.Enabled = True
+            SingleTimer.SelectedTimer.ClearButton.Enabled = True
+        End If
+
     End Sub
 
     Private Sub AddSecondsToSelected(extraSeconds As Integer)
-        Me.SecondsCounter1.increaseBy(extraSeconds)
+        Me.Seconds.increaseBy(extraSeconds)
     End Sub
 
-    Private Sub newBackColor(newColor As Color)
-        Me.BackColor = newColor
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        SetLook()
+        If ClearButton.Enabled = True Then
+            Me.Timer.Enabled = False
+            Center.ActiveControl = Nothing
+            StopButton.Enabled = False
+            Me.Minutes.setValue(0)
+            Me.Seconds.setValue(0)
+            Me.Timer.Interval = 1000
+            DisableAllButtons()
+        End If
+
     End Sub
 
-    Private Sub newForeColor(newColor As Color)
-        Me.RadioButton1.ForeColor = newColor
-        Me.SecondsCounter1.ForeColor = newColor
-        Me.MinutesCounter1.ForeColor = newColor
-        Me.Label1.ForeColor = newColor
-    End Sub
-
-
-    Private Sub SingleTimer_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
-        If SingleTimer.SelectedTimer Is Me Then
-            Me.newBackColor(System.Drawing.SystemColors.Highlight)
-            Me.newForeColor(SystemColors.Control)
-            Me.RadioButton1.Checked = True
+    Private Sub ClearButton_EnabledChanged(sender As Object, e As EventArgs) Handles ClearButton.EnabledChanged
+        If ClearButton.Enabled = True Then
+            ClearButton.ForeColor = System.Drawing.Color.Black
+            ClearButton.BackColor = System.Drawing.Color.White
         End If
     End Sub
 
@@ -106,9 +106,33 @@ Public Class SingleTimer
             Me.newForeColor(System.Drawing.Color.RoyalBlue)
         End If
         Me.newBackColor(System.Drawing.SystemColors.ActiveCaption)
-        Me.RadioButton1.Checked = False
-        Me.Label1.Visible = True
+        Me.TitleLabel.Checked = False
+        Me.ColonLabel.Visible = True
 
+    End Sub
+
+    Private Sub DisableAllButtons()
+        ClearButton.ForeColor = System.Drawing.SystemColors.WindowFrame
+        ClearButton.BackColor = System.Drawing.SystemColors.ButtonShadow
+        StopButton.ForeColor = System.Drawing.SystemColors.WindowFrame
+        StopButton.BackColor = System.Drawing.SystemColors.ButtonShadow
+        StartButton.ForeColor = System.Drawing.SystemColors.WindowFrame
+        StartButton.BackColor = System.Drawing.SystemColors.ButtonShadow
+        Center.ActiveControl = Nothing
+        Me.StopButton.Enabled = False
+        Me.StartButton.Enabled = False
+        Me.ClearButton.Enabled = False
+    End Sub
+
+    Private Sub newBackColor(newColor As Color)
+        Me.BackColor = newColor
+    End Sub
+
+    Private Sub newForeColor(newColor As Color)
+        Me.TitleLabel.ForeColor = newColor
+        Me.Seconds.ForeColor = newColor
+        Me.Minutes.ForeColor = newColor
+        Me.ColonLabel.ForeColor = newColor
     End Sub
 
     Private Sub selectMe()
@@ -119,59 +143,65 @@ Public Class SingleTimer
             Me.newForeColor(SystemColors.Control)
         End If
         Me.newBackColor(System.Drawing.SystemColors.Highlight)
-        Me.RadioButton1.Checked = True
-        Me.Label1.Visible = True
+        Me.TitleLabel.Checked = True
+        Me.ColonLabel.Visible = True
         SingleTimer.SelectedTimer = Me
 
     End Sub
 
-    Private Sub alarmColours()
-        Me.RadioButton1.ForeColor = System.Drawing.Color.Red
-        Me.MinutesCounter1.ForeColor = System.Drawing.Color.Red
-        Me.SecondsCounter1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.ForeColor = System.Drawing.Color.Red
+    Private Sub SingleTimer_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
+        If SingleTimer.SelectedTimer Is Me Then
+            Me.newBackColor(System.Drawing.SystemColors.Highlight)
+            Me.newForeColor(SystemColors.Control)
+            Me.TitleLabel.Checked = True
+        End If
     End Sub
 
     Private Sub SetLook()
-        If KitchenTimerForm.BackLeft_SingleTimer Is Me Then
+        If Center.SingleTimer1 Is Me Then
             Me.selectMe()
-            KitchenTimerForm.BackRight_SingleTimer.deselectMe()
-            KitchenTimerForm.FrontLeft_SingleTimer.deselectMe()
-            KitchenTimerForm.FrontRight_SingleTimer.deselectMe()
-        ElseIf KitchenTimerForm.BackRight_SingleTimer Is Me Then
+            Center.SingleTimer2.deselectMe()
+            Center.SingleTimer3.deselectMe()
+            Center.SingleTimer4.deselectMe()
+        ElseIf Center.SingleTimer2 Is Me Then
             Me.selectMe()
-            KitchenTimerForm.BackLeft_SingleTimer.deselectMe()
-            KitchenTimerForm.FrontLeft_SingleTimer.deselectMe()
-            KitchenTimerForm.FrontRight_SingleTimer.deselectMe()
-        ElseIf KitchenTimerForm.FrontLeft_SingleTimer Is Me Then
+            Center.SingleTimer1.deselectMe()
+            Center.SingleTimer3.deselectMe()
+            Center.SingleTimer4.deselectMe()
+        ElseIf Center.SingleTimer3 Is Me Then
             Me.selectMe()
-            KitchenTimerForm.BackRight_SingleTimer.deselectMe()
-            KitchenTimerForm.BackLeft_SingleTimer.deselectMe()
-            KitchenTimerForm.FrontRight_SingleTimer.deselectMe()
-        ElseIf KitchenTimerForm.FrontRight_SingleTimer Is Me Then
+            Center.SingleTimer2.deselectMe()
+            Center.SingleTimer1.deselectMe()
+            Center.SingleTimer4.deselectMe()
+        ElseIf Center.SingleTimer4 Is Me Then
             Me.selectMe()
-            KitchenTimerForm.BackRight_SingleTimer.deselectMe()
-            KitchenTimerForm.FrontLeft_SingleTimer.deselectMe()
-            KitchenTimerForm.BackLeft_SingleTimer.deselectMe()
+            Center.SingleTimer2.deselectMe()
+            Center.SingleTimer3.deselectMe()
+            Center.SingleTimer1.deselectMe()
         End If
     End Sub
 
-    Private Sub SingleTimer_Click(sender As Object, e As EventArgs) Handles Me.Click, RadioButton1.Click, SecondsCounter1.Click, MinutesCounter1.Click, Label1.Click
+    Private Sub SingleTimer_Click(sender As Object, e As EventArgs) Handles Me.Click, TitleLabel.Click, Seconds.Click, Minutes.Click, ColonLabel.Click
         SetLook()
+    End Sub
+
+    Private Sub soundAlarm()
+        For i = 1 To Me.Alarm_Beeps
+            Console.Beep(Me.Alarm_Frequency, (200 / Me.Alarm_Beeps))
+        Next i
     End Sub
 
     Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
-        SetLook()
         If StartButton.Enabled = True Then
             Me.countdown = True
             Me.Timer.Enabled = True
-            StartButton.Enabled = False
             StartButton.ForeColor = System.Drawing.SystemColors.WindowFrame
             StartButton.BackColor = System.Drawing.SystemColors.ButtonShadow
+            Center.ActiveControl = Nothing
+            StartButton.Enabled = False
             StopButton.Enabled = True
         End If
-
-
+        SetLook()
     End Sub
 
     Private Sub StartButton_EnabledChanged(sender As Object, e As EventArgs) Handles StartButton.EnabledChanged
@@ -183,15 +213,13 @@ Public Class SingleTimer
 
     Private Sub StopButton_Click(sender As Object, e As EventArgs) Handles StopButton.Click
         If StopButton.Enabled = True Then
-            stopTiming()
             StopButton.ForeColor = System.Drawing.SystemColors.WindowFrame
             StopButton.BackColor = System.Drawing.SystemColors.ButtonShadow
+            stopTiming()
+            Center.ActiveControl = Nothing
             StopButton.Enabled = False
         End If
         SetLook()
-
-
-
     End Sub
 
     Private Sub StopButton_EnabledChanged(sender As Object, e As EventArgs) Handles StopButton.EnabledChanged
@@ -201,43 +229,9 @@ Public Class SingleTimer
         End If
     End Sub
 
-    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
-        SetLook()
-
-        If ClearButton.Enabled = True Then
-            Me.Timer.Enabled = False
-            StopButton.Enabled = False
-            Me.MinutesCounter1.setValue(0)
-            Me.SecondsCounter1.setValue(0)
-            Me.Timer.Interval = 1000
-            ClearButton.ForeColor = System.Drawing.SystemColors.WindowFrame
-            ClearButton.BackColor = System.Drawing.SystemColors.ButtonShadow
-            DisableAllButtons()
-        End If
-    End Sub
-
-    Private Sub ClearButton_EnabledChanged(sender As Object, e As EventArgs) Handles ClearButton.EnabledChanged
-        If ClearButton.Enabled = True Then
-            ClearButton.ForeColor = System.Drawing.Color.Black
-            ClearButton.BackColor = System.Drawing.Color.White
-        End If
-    End Sub
-
-    Private Sub DisableAllButtons()
-        Me.StopButton.Enabled = False
-        Me.StartButton.Enabled = False
-        Me.ClearButton.Enabled = False
-    End Sub
-
-    Private Sub soundAlarm()
-        Console.Beep(Me.Frequency, Me.Beeps)
-    End Sub
-
     Private Sub stopTiming()
 
-
         Me.Timer.Enabled = False
-
 
         If Me.beeping = True Then
             Me.Timer.Interval = 1000
@@ -249,25 +243,63 @@ Public Class SingleTimer
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
-        If Me.beeping = True Then
-            ClearButton.ForeColor = System.Drawing.SystemColors.WindowFrame
-            ClearButton.BackColor = System.Drawing.SystemColors.ButtonShadow
-            Me.ClearButton.Enabled = False
-            Me.countdown = False
-            Me.Timer.Interval = Me.Beeps
-            If Me.Label1.Visible = True Then
-                Me.Label1.Visible = False
-            Else
-                Me.Label1.Visible = True
-            End If
-            soundAlarm() 'This Is When the singleTimer has reached zero And the alarm should be sounding
-        ElseIf Me.countdown = True Then
-            Me.SecondsCounter1.decrement() 'This is when the singletimer should be decrementing by one second every one second
-            If Me.MinutesCounter1.isZero() And Me.SecondsCounter1.isZero() Then
+        Me.Timer.Enabled = False
+        If Me.countdown Then
+            Me.Seconds.decrement()
+            If Me.Minutes.isZero() And Me.Seconds.isZero() Then
+                Me.countdown = False
                 Me.beeping = True
                 Me.alarmColours()
                 Me.Timer.Interval = 1
             End If
+        Else
+            ClearButton.ForeColor = System.Drawing.SystemColors.WindowFrame
+            ClearButton.BackColor = System.Drawing.SystemColors.ButtonShadow
+            Center.ActiveControl = Nothing
+            Me.ClearButton.Enabled = False
+            Me.countdown = False
+            Me.Timer.Interval = 600
+            If Me.ColonLabel.Visible = True Then
+                Me.ColonLabel.Visible = False
+            Else
+                Me.ColonLabel.Visible = True
+            End If
+            soundAlarm() 'This Is When the singleTimer has reached zero And the alarm should be sounding
         End If
+        'If Me.beeping = True Then
+        '    ClearButton.ForeColor = System.Drawing.SystemColors.WindowFrame
+        '    ClearButton.BackColor = System.Drawing.SystemColors.ButtonShadow
+        '    Center.ActiveControl = Nothing
+        '    Me.ClearButton.Enabled = False
+        '    Me.countdown = False
+        '    Me.Timer.Interval = 600
+        '    If Me.ColonLabel.Visible = True Then
+        '        Me.ColonLabel.Visible = False
+        '    Else
+        '        Me.ColonLabel.Visible = True
+        '    End If
+        '    soundAlarm() 'This Is When the singleTimer has reached zero And the alarm should be sounding
+        'ElseIf Me.countdown = True Then
+        '    Me.Seconds.decrement() 'This is when the singletimer should be decrementing by one second every one second
+        '    If Me.Minutes.isZero() And Me.Seconds.isZero() Then
+        '        Me.beeping = True
+        '        Me.alarmColours()
+        '        Me.Timer.Interval = 1
+        '    End If
+        'End If
+        Me.Timer.Enabled = True
     End Sub
+
+
+
+    'These are my custom sub routines just to simplify my code
+    Private Sub alarmColours()
+        Me.TitleLabel.ForeColor = System.Drawing.Color.Red
+        Me.Minutes.ForeColor = System.Drawing.Color.Red
+        Me.Seconds.ForeColor = System.Drawing.Color.Red
+        Me.ColonLabel.ForeColor = System.Drawing.Color.Red
+    End Sub
+
+
+
 End Class

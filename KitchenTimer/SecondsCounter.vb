@@ -31,9 +31,10 @@
     End Sub
 
     Public Sub increaseBy(increment As Integer)
+
         If (minutes.isMax() And ((Me.getValue() + increment) >= Me.maxvalue)) Then
             Me.setToMax()
-        ElseIf ((Me.getValue() + increment) >= Me.maxvalue) Then
+        ElseIf ((Me.getValue() + increment) > Me.maxvalue) Then
             minutes.setValue(minutes.getValue() + 1)
             Me.setValue(Me.getValue() + increment - Me.maxvalue - 1)
         Else
